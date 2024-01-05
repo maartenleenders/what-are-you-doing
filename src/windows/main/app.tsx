@@ -3,6 +3,7 @@ import { RegisterForm } from "./../../shared/ui/register-form";
 import { MainMenu } from "../../shared/ui/main-menu";
 import { Box, AppBar } from "@mui/material";
 import { LogEntriesTable } from "../../shared/ui/log-entries";
+import { WorkingSummary } from "../../shared/ui/working-summary";
 
 interface Props {}
 
@@ -36,7 +37,7 @@ const App: React.FC<Props> = (props) => {
       )}
       {activePage === "workOverview" && (
         <Box style={{ marginLeft: 300 }} marginTop={1} padding={2}>
-          <div><h1>✨✨WORK OVERVIEW WITH FANCY SPARKLES✨✨</h1></div>
+          <WorkingSummary />
         </Box>
       )}
     </>
