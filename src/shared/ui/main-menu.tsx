@@ -25,9 +25,10 @@ export const MENU_ITEMS = [
 
 export type MainMenuProps = {
   width: number;
+  setActivePage: (page: string) => void;
 };
 
-export const MainMenu = ({ width }: MainMenuProps) => {
+export const MainMenu = ({ width, setActivePage }: MainMenuProps) => {
   return (
     <Drawer
       variant="permanent"
@@ -39,9 +40,14 @@ export const MainMenu = ({ width }: MainMenuProps) => {
     >
       <Box sx={{ overflow: "auto" }}>
         <List>
-          {MENU_ITEMS.map(({ icon, title }) => (
+          {MENU_ITEMS.map(({ icon, title, name }) => (
             <ListItem key={title} disablePadding>
-              <ListItemButton selected>
+              <ListItemButton
+                selected
+                onClick={() => {
+                  setActivePage(name);
+                }}
+              >
                 <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={title} />
               </ListItemButton>
