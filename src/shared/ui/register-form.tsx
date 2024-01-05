@@ -6,7 +6,11 @@ type FormValues = {
     activity: string
 }
 
-export const RegisterForm = () => {
+interface RegisterFormProps {
+    onSubmitCorollary?: () => void;
+}
+
+export const RegisterForm: React.FC<RegisterFormProps> = ( {onSubmitCorollary} ) => {
 
     const {
         register,
@@ -20,6 +24,8 @@ export const RegisterForm = () => {
             activity,
             date: new Date()
         })
+
+        onSubmitCorollary?.();
         reset()
       }
 

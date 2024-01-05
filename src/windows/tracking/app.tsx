@@ -1,15 +1,9 @@
 import React from 'react'
-import { useLogEntriesContext } from './../../shared/context/log-entries.context'
+
 import { RegisterForm } from './../../shared/ui/register-form'
 import { useCountDown} from './../../shared/hooks/countdown'
 
-interface Props {
-
-}
-
-const App: React.FC<Props> = (props) => {
-
-    const {state, addLogEntry} = useLogEntriesContext()
+const App: React.FC = () => {
 
     const [timeLeft] = useCountDown(10)
 
@@ -17,12 +11,9 @@ const App: React.FC<Props> = (props) => {
         window.close()
     }
 
-    // Hooks
-    // const states = useSelector(() => controller.states);
-
     return (
         <div className='container text-center gap-4 space-x-4 space-y-4'>
-            <RegisterForm />
+            <RegisterForm onSubmitCorollary={window.close} />
             {timeLeft}
         </div>
     )
