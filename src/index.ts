@@ -27,6 +27,7 @@ const createMainWindow = (): void => {
     },
   });
 
+  // window.webContents.openDevTools()
   window.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 }
 

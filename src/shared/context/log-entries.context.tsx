@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocalStorage } from './../../shared/hooks/use-local-storage-hook'
 
 type LogEntry = {
     activity: string
@@ -30,12 +31,7 @@ export const LogEntriesContextProvider = ({
   }: {
     children: React.ReactNode
   }): JSX.Element => {
-    const [state, setState] = React.useState<LogEntriesState>(initialState)
-    const bc = new BroadcastChannel("entries_channel");
-
-    bc.onmessage = (ev) => {
-      setState(ev.data)
-    };
+    const [state, setState] = useLocalStorage<LogEntriesState>('log-entries', initialState)
 
     const addLogEntry = (entry: LogEntry) => {
       const ret = {
@@ -47,7 +43,6 @@ export const LogEntriesContextProvider = ({
       }
 
       setState(ret)
-      bc.postMessage(ret);
 
       return ret
     }
