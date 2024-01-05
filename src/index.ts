@@ -5,6 +5,10 @@ import { app, BrowserWindow, globalShortcut, screen } from 'electron';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 
+
+//tracking_window
+declare const TRACKING_WINDOW_WEBPACK_ENTRY: string;
+declare const TRACKING_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -53,7 +57,7 @@ const createTrackingWindow = (): void => {
     title: 'What ya working on?',
     show: false,
     webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      preload: TRACKING_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
   });
 
@@ -64,7 +68,7 @@ const createTrackingWindow = (): void => {
   })
 
   // and load the index.html of the app.
-  trackingWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  trackingWindow.loadURL(TRACKING_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
