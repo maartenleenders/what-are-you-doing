@@ -95,8 +95,8 @@ app.on('ready', () => {
 
   createMainWindow()
 
-  const ret = globalShortcut.register('CommandOrControl+X', () => {
-    console.log('CommandOrControl+X is pressed')
+  const ret = globalShortcut.register('CmdOrCtrl+Alt+A', () => {
+    console.log('CmdOrCtrl+Alt+A is pressed')
     createTrackingWindow()
   })
 
