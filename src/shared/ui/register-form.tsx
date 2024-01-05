@@ -2,7 +2,6 @@ import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useLogEntriesContext } from '../context/log-entries.context'
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import { FormTextField } from './form/form-text-field';

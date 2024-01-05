@@ -4,7 +4,13 @@ import MailIcon from '@mui/icons-material/Mail';
 
 export const MENU_ITEMS = [{
     icon: <MailIcon />, 
+    name: "logEntries",
     title: 'Log Entries'
+},
+{
+  icon: <MailIcon />, 
+  name: "workOverview",
+  title: 'Work overview'
 }]
 
 export type MainMenuProps = {
