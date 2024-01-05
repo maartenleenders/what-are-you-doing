@@ -21,28 +21,28 @@ export const LogEntriesTable = () => {
 
 
     return (
-        <TableContainer component={Paper} sx={{ maxHeight: '100%' }}>
-      <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Activity</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {sortedEntries.map(({ date, activity }, index) => (
-            <TableRow
-              key={index}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {format(date.toString(), "dd-MM-yyyy - HH:mm")}
-              </TableCell>
-              <TableCell>{activity}</TableCell>
+      <TableContainer component={Paper} sx={{ maxHeight: '100%' }}>
+        <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Date</TableCell>
+              <TableCell>Activity</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {sortedEntries.map(({ date, activity }, index) => (
+              <TableRow
+                key={index}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {format(date.toString(), "dd-MM-yyyy - HH:mm")}
+                </TableCell>
+                <TableCell>{activity}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     )
 }

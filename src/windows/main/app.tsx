@@ -16,22 +16,22 @@ const App: React.FC<Props> = (props) => {
         <MainMenu width={300} />
 
         <AppBar
-        position="fixed"
-        sx={{
-          width: { sm: `calc(100% - ${300}px)` },
-          ml: { sm: `${300}px` },
-          background: '#fff'
-        }}
-      >
-          <Box margin={2}><RegisterForm /></Box>
-    </AppBar>
+            position="fixed"
+            sx={{
+            width: { sm: `calc(100% - ${300}px)` },
+            ml: { sm: `${300}px` },
+            background: '#fff'
+            }}
+        >
+            <Box margin={2}><RegisterForm /></Box>
+        </AppBar>
 
         <Box style={{marginLeft: 300}} marginTop={11} padding={2}>
-        
+
             <LogEntriesTable />
-           
+
         </Box>
-      
+
         </>
     )
 
