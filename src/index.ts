@@ -18,13 +18,8 @@ let trackingWindow: BrowserWindow | undefined = undefined;
 const createMainWindow = (): void => {
   const window = new BrowserWindow({
     height: 600,
-<<<<<<< Updated upstream
     width: 1200,
     title: 'What ya working on?',
-=======
-    width: 600,
-    title: "What ya working on?",
->>>>>>> Stashed changes
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
