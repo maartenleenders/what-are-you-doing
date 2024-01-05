@@ -14,9 +14,7 @@ const App: React.FC = () => {
 
     return (
         <Box marginTop={4} marginLeft={1} marginRight={1} marginBottom={1}>
-
             <RegisterForm onSubmitCorollary={() => window.close()}/>
-    
         </Box>
     )
 
