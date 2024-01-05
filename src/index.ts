@@ -19,7 +19,7 @@ const createMainWindow = (): void => {
   const window = new BrowserWindow({
     height: 600,
     width: 1200,
-    title: 'What ya working on?',
+    title: "What ya working on?",
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
@@ -77,7 +77,12 @@ const createTrackingWindow = (): void => {
 
 function setTimer(timeOut: number, functionToRun: () => void) {
   setTimeout(() => {
-    const verifiedFunctionToRun = typeof functionToRun === 'function' ? functionToRun : () => {/*do nothing*/};
+    const verifiedFunctionToRun =
+      typeof functionToRun === "function"
+        ? functionToRun
+        : () => {
+            /*do nothing*/
+          };
     verifiedFunctionToRun();
     setTimer(timeOut, functionToRun);
   }, timeOut);
