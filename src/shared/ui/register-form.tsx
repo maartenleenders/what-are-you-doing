@@ -20,7 +20,7 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
   const { handleSubmit, control, reset } = useForm<FormValues>();
   const { state, addLogEntry } = useLogEntriesContext();
 
-  const lastActivity = state.entries[state.entries.length - 1].activity;
+  const lastActivity = state.entries[state.entries.length - 1]?.activity;
 
   const onSubmit: SubmitHandler<FormValues> = ({ activity }) => {
     console.log("FOOO");
