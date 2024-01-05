@@ -22,12 +22,14 @@ export const RegisterForm: React.FC<RegisterFormProps> = ( {onSubmitCorollary} )
         control,
         reset,
       } = useForm<FormValues>()
-      const { addLogEntry } = useLogEntriesContext()
+      const { state, addLogEntry } = useLogEntriesContext()
+
+      const lastActivity = state.entries[state.entries.length - 1].activity;
 
       const onSubmit: SubmitHandler<FormValues> = ({ activity }) => {
         console.log('FOOO')
         addLogEntry({
-            activity,
+            activity: activity || lastActivity,
             date: new Date()
         })
 
@@ -39,7 +41,16 @@ export const RegisterForm: React.FC<RegisterFormProps> = ( {onSubmitCorollary} )
         <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={1} direction="column">
                 <Stack spacing={1} direction="row">
-                    <FormTextField name="activity" control={control} id="outlined-basic" label="Activity" variant="outlined" style={{ width: '100%'}}/>
+                    <FormTextField
+                        name="activity"
+                        placeholder={lastActivity}
+                        control={control}
+                        id="outlined-basic"
+                        label="Activity"
+                        variant="outlined"
+                        style={{ width: '100%'}}
+                        InputLabelProps={{ shrink: true }}
+                    />
                     <Button type="submit" variant="contained" endIcon={<SendIcon/>}>Send</Button>
                 </Stack>
             </Stack>
