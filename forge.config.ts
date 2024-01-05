@@ -24,10 +24,18 @@ const config: ForgeConfig = {
         entryPoints: [
           {
             html: './src/index.html',
-            js: './src/renderer.ts',
+            js: './src/main/main_renderer.ts',
             name: 'main_window',
             preload: {
-              js: './src/preload.ts',
+              js: './src/main/main_preload.ts',
+            },
+          },
+          {
+            html: './src/index.html',
+            js: './src/tracking/tracking_renderer.ts',
+            name: 'tracking_window',
+            preload: {
+              js: './src/tracking/tracking_preload.ts',
             },
           },
         ],

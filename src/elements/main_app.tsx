@@ -20,9 +20,8 @@ const App: React.FC<Props> = (props) => {
     return (
         <div className='container text-center gap-4 space-x-4 space-y-4'>
             <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-               Hello world! boo 
+               Hello world! boo
             </h1>
-
         </div>
     )
 
