@@ -13,7 +13,7 @@ export interface LogEntriesContextState {
     state: LogEntriesState
     addLogEntry: (entry: LogEntry) => LogEntriesState
   }
-  
+
   const initialState: LogEntriesState = { entries: [] }
 
 export const LogEntriesContext = React.createContext<LogEntriesContextState>({
@@ -31,21 +31,27 @@ export const LogEntriesContextProvider = ({
     children: React.ReactNode
   }): JSX.Element => {
     const [state, setState] = React.useState<LogEntriesState>(initialState)
-  
+    const bc = new BroadcastChannel("entries_channel");
+
+    bc.onmessage = (ev) => {
+      setState(ev.data)
+    };
+
     const addLogEntry = (entry: LogEntry) => {
       const ret = {
         ...state,
         entries: [
-            ...state.entries,
-            entry
+          ...state.entries,
+          entry
         ]
       }
 
       setState(ret)
+      bc.postMessage(ret);
 
       return ret
     }
-  
+
     return (
       <LogEntriesContext.Provider value={{ state, addLogEntry }}>
         {children}
