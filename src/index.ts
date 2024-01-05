@@ -57,16 +57,26 @@ const createTrackingWindow = (): void => {
   // mainWindow.webContents.openDevTools();
 };
 
+function setTimer( timeOut: number, functionToRun: () => void ) {
+  setTimeout(() => {
+    const verifiedFunctionToRun = typeof functionToRun === 'function' ? functionToRun : () => {/*do nothing*/};
+    console.log('timer')
+    console.log( process.uptime() )
+    verifiedFunctionToRun();
+    setTimer( timeOut, functionToRun );
+  }, timeOut )
+}
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  
-  const ret = globalShortcut.register('CommandOrControl+X', () => {
 
-    createTrackingWindow()
+  const ret = globalShortcut.register('CommandOrControl+X', () => {
     console.log('CommandOrControl+X is pressed')
   })
+
+  setTimer( 15 * 60 * 1000, createTrackingWindow );
 
   if (!ret) {
     throw new Error('Failed to register shortcut')
@@ -100,16 +110,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-
-app.on('ready', () => {
-  console.log( Notification.isSupported() );
-  console.log('not true')
-
-  new Notification({
-    title: 'Headline',
-    body: 'Here write your message',
-    hasReply: true,
-    replyPlaceholder: 'what ya working on?',
-    urgency: 'critical'
-}).show();
-})
