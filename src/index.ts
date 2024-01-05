@@ -40,13 +40,16 @@ const createTrackingWindow = (): void => {
   const primaryDisplay = screen.getPrimaryDisplay()
   const { width, height } = primaryDisplay.workAreaSize
 
+  const windowHeight = 105
+
   // Create the browser window.
   trackingWindow = new BrowserWindow({
-    height: 200,
-    width: 300,
-    x: width - 320,
-    y: height - 220,
+    height: windowHeight,
+    width: 400,
+    x: width - (400 + 20),
+    y: height - (windowHeight + 20),
     type: 'panel',
+    titleBarStyle: 'hidden',
     resizable: false,
     alwaysOnTop: true,
     minimizable: false,

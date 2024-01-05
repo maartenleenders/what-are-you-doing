@@ -2,6 +2,7 @@ import React from 'react'
 
 import { RegisterForm } from './../../shared/ui/register-form'
 import { useCountDown} from './../../shared/hooks/countdown'
+import Box from '@mui/material/Box'
 
 const App: React.FC = () => {
 
@@ -12,12 +13,12 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className='container text-center gap-4 space-x-4 space-y-4'>
-            <RegisterForm onSubmitCorollary={window.close} />
-            {timeLeft}
-        </div>
+        <Box marginTop={4} marginLeft={1} marginRight={1} marginBottom={1}>
+
+            <RegisterForm onSubmitCorollary={() => window.close()}/>
+    
+        </Box>
     )
 
 }
-
 export default App;
