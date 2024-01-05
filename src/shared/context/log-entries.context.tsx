@@ -13,6 +13,7 @@ type LogEntriesState = {
 export interface LogEntriesContextState {
   state: LogEntriesState;
   addLogEntry: (entry: LogEntry) => LogEntriesState;
+  clearLogEntries: () => void;
 }
 
 const initialState: LogEntriesState = { entries: [] };
@@ -20,6 +21,9 @@ const initialState: LogEntriesState = { entries: [] };
 export const LogEntriesContext = React.createContext<LogEntriesContextState>({
   state: initialState,
   addLogEntry: () => initialState,
+  clearLogEntries: () => {
+    /*do nothing*/
+  },
 });
 
 export const useLogEntriesContext = (): LogEntriesContextState =>
@@ -35,6 +39,10 @@ export const LogEntriesContextProvider = ({
     initialState,
   );
 
+  const clearLogEntries = () => {
+    setState(initialState);
+  };
+
   const addLogEntry = (entry: LogEntry) => {
     const ret = {
       ...state,
@@ -47,7 +55,7 @@ export const LogEntriesContextProvider = ({
   };
 
   return (
-    <LogEntriesContext.Provider value={{ state, addLogEntry }}>
+    <LogEntriesContext.Provider value={{ state, clearLogEntries, addLogEntry }}>
       {children}
     </LogEntriesContext.Provider>
   );

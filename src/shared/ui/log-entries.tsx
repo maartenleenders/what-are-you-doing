@@ -16,10 +16,6 @@ export const LogEntriesTable = () => {
     return b.date.getTime() - a.date.getTime();
   });
 
-  const sortedEntries = state.entries.sort((a, b) => {
-    return b.date.getTime() - a.date.getTime();
-  });
-
   return (
     <TableContainer component={Paper} sx={{ maxHeight: "100%" }}>
       <Table stickyHeader sx={{ minWidth: 650 }} aria-label="simple table">
